@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACM Assessoria Escolar Bilíngue – Reforço Escolar Individualizado</title>
+  <meta name="description" content="A ACM ajuda crianças e adolescentes com dificuldades acadêmicas através de reforço escolar individualizado, método bilíngue e acompanhamento personalizado. Avaliação gratuita." />
+  <meta property="og:title" content="ACM Assessoria Escolar Bilíngue" />
+  <meta property="og:description" content="Reforço escolar individualizado, método bilíngue e acompanhamento personalizado para seu filho recuperar a confiança." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Ads – substituir AW-XXXXXXXXX pelo seu Conversion ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-XXXXXXXXX');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary:  '#1E3A5F',
+            'primary-light': '#2A4F82',
+            accent:   '#2563EB',
+            cta:      '#16A34A',
+            'cta-h':  '#15803D',
+            warm:     '#F5F0EB',
+            dark:     '#1C1C1E',
+            muted:    '#6B7280',
+          },
+          fontFamily: {
+            display: ['Montserrat', 'sans-serif'],
+            sans:    ['Poppins', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+
+    /* ── Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1{transition-delay:.08s} .d2{transition-delay:.16s}
+    .d3{transition-delay:.24s} .d4{transition-delay:.32s}
+    .d5{transition-delay:.40s} .d6{transition-delay:.48s}
+
+    /* ── Hero keyframes ── */
+    @keyframes fadeUp   { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none} }
+    @keyframes fadeDown { from{opacity:0;transform:translateY(-14px)} to{opacity:1;transform:none} }
+    @keyframes fadeRight{ from{opacity:0;transform:translateX(28px)} to{opacity:1;transform:none} }
+    @keyframes bob      { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+    .anim-up-1  { animation: fadeUp   .7s  .05s ease both }
+    .anim-up-2  { animation: fadeUp   .7s  .15s ease both }
+    .anim-up-3  { animation: fadeUp   .7s  .25s ease both }
+    .anim-up-4  { animation: fadeUp   .7s  .35s ease both }
+    .anim-up-5  { animation: fadeUp   .7s  .45s ease both }
+    .anim-down  { animation: fadeDown .6s  .05s ease both }
+    .anim-right { animation: fadeRight .8s .3s  ease both }
+    .anim-bob   { animation: bob 2.2s ease-in-out infinite }
+
+    /* ── Hero pattern ── */
+    .hero-bg {
+      background: linear-gradient(135deg,#1E3A5F 0%,#2A4F82 55%,#1a3a6e 100%);
+    }
+    .hero-pattern::before {
+      content:'';
+      position:absolute;inset:0;pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* ── Navbar ── */
+    .nav-scrolled {
+      background: rgba(30,58,95,.97) !important;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,.2);
+    }
+
+    /* ── Cards ── */
+    .card-hover {
+      transition: transform .28s ease, box-shadow .28s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 36px rgba(30,58,95,.11);
+    }
+
+    /* ── FAQ ── */
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .38s ease;
+    }
+    .faq-open .faq-body { max-height: 320px; }
+    .faq-icon { transition: transform .3s ease; }
+    .faq-open .faq-icon { transform: rotate(180deg); }
+
+    /* ── WhatsApp pulse ── */
+    @keyframes waPulse { 0%{transform:scale(1);opacity:.7} 100%{transform:scale(1.7);opacity:0} }
+    .wa-ring::before {
+      content:'';position:absolute;inset:-4px;border-radius:50%;
+      background:#25D366;
+      animation: waPulse 2.2s ease-out infinite;
+    }
+
+    /* ── Step connector ── */
+    @media(min-width:1024px){
+      .step-line::after {
+        content:'';position:absolute;top:3rem;
+        left:calc(50% + 2.8rem);width:calc(100% - 5.6rem);
+        border-top:2px dashed rgba(37,99,235,.25);
+      }
+    }
+  </style>
+</head>
+<body class="bg-white text-dark antialiased">
+
+<!-- ════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════ -->
+<nav id="navbar" class="fixed top-0 inset-x-0 z-50 py-4 px-6 transition-all duration-300">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <a href="#hero" class="flex items-center gap-2">
+      <img src="images/Logo.jpeg" alt="ACM Assessoria Escolar" class="h-10 w-auto" />
+    </a>
+    <a href="https://wa.me/5516991969341?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais."
+       target="_blank" rel="noopener"
+       class="hidden md:inline-flex items-center gap-2 bg-cta hover:bg-cta-h text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:shadow-lg">
+      <i class="fa-brands fa-whatsapp text-base"></i> Falar no WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section id="hero" class="hero-bg hero-pattern relative min-h-screen flex items-center overflow-hidden">
+
+  <!-- Glow blobs -->
+  <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+       style="background:radial-gradient(circle,rgba(96,165,250,.15),transparent 70%);transform:translate(25%,-20%)"></div>
+  <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none"
+       style="background:radial-gradient(circle,rgba(52,211,153,.12),transparent 70%);transform:translate(-30%,30%)"></div>
+
+  <div class="relative max-w-6xl mx-auto px-6 w-full py-28 grid lg:grid-cols-2 gap-12 items-start">
+
+    <!-- Left -->
+    <div>
+
+      <div class="anim-down inline-flex items-center gap-2 bg-white/10 border border-white/20 text-blue-100 text-sm font-medium px-4 py-2 rounded-full mb-6">
+        <span class="w-2 h-2 bg-cta rounded-full inline-block animate-pulse"></span>
+        Acompanhamento individual e também bilíngue
+      </div>
+
+      <h1 class="anim-up-1 font-display text-4xl md:text-5xl lg:text-[3.4rem] font-extrabold text-white leading-[1.12] mb-4">
+        Seu filho precisa de <span class="text-green-300">apoio escolar?</span>
+      </h1>
+
+      <p class="anim-up-2 text-white text-xl md:text-2xl font-semibold leading-snug mb-4 max-w-xl">
+        Oferecemos acompanhamento personalizado para que seu filho aprenda com mais segurança, confiança e motivação.
+      </p>
+
+      <p class="anim-up-2 text-blue-100 text-base md:text-lg leading-relaxed mb-8 max-w-xl">
+        Do Ensino Fundamental ao Ensino Médio: profissionais especializados em todas as matérias, alfabetização em português e inglês, e preparação para provas. Com suporte contínuo ou em aulas pontuais — conforme a necessidade da sua família.
+      </p>
+
+      <!-- Badges -->
+      <div class="anim-up-3 flex flex-wrap gap-2 mb-8">
+        <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm px-3.5 py-1.5 rounded-full">
+          <i class="fa-solid fa-user-graduate text-green-300 text-xs"></i> Atendimento Individual
+        </span>
+        <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm px-3.5 py-1.5 rounded-full">
+          <i class="fa-solid fa-language text-green-300 text-xs"></i> Método Bilíngue
+        </span>
+        <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm px-3.5 py-1.5 rounded-full">
+          <i class="fa-solid fa-book-open text-green-300 text-xs"></i> Todas as Matérias
+        </span>
+        <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-sm px-3.5 py-1.5 rounded-full">
+          <i class="fa-solid fa-spell-check text-green-300 text-xs"></i> Alfabetização Bilíngue
+        </span>
+      </div>
+
+      <!-- CTAs -->
+      <div class="anim-up-4 flex flex-col sm:flex-row gap-3 mb-8">
+        <a href="https://wa.me/5516991969341?text=Olá!%20Quero%20falar%20com%20um%20especialista."
+           target="_blank" rel="noopener"
+           onclick="if(typeof gtag!=='undefined')gtag('event','conversion',{'send_to':'AW-XXXXXXXXX/LABEL_AQUI'})"
+           class="inline-flex items-center justify-center gap-3 bg-cta hover:bg-cta-h text-white font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 hover:shadow-2xl hover:-translate-y-0.5">
+          <i class="fa-brands fa-whatsapp text-2xl"></i>
+          Falar com um especialista no WhatsApp
+        </a>
+        <a href="#contato"
+           class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/40 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200">
+          <i class="fa-solid fa-calendar-check text-sm"></i> Agendar avaliação
+        </a>
+      </div>
+
+      <!-- Trust row -->
+      <div class="anim-up-5 flex flex-wrap gap-5 text-blue-200 text-sm">
+        <span class="flex items-center gap-1.5"><i class="fa-solid fa-bolt text-green-400"></i> Resposta rápida</span>
+        <span class="flex items-center gap-1.5"><i class="fa-solid fa-star text-yellow-400"></i> Avaliação gratuita</span>
+        <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-green-400"></i> Sem compromisso</span>
+      </div>
+    </div>
+
+    <!-- Right card -->
+    <div class="hidden lg:flex anim-right mt-14">
+      <div class="relative w-full">
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl overflow-hidden">
+          <img src="images/Hero.png" alt="Aluno estudando com a ACM" class="w-full h-80 object-cover" />
+          <div class="p-6">
+            <div class="text-white font-display text-xl font-bold mb-1">Aprendizado que transforma</div>
+            <p class="text-blue-200 text-sm mb-5">Cada aluno tem um ritmo único. Respeitamos e potencializamos isso.</p>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="bg-white/10 rounded-xl p-3">
+                <div class="text-white font-bold text-2xl">+400</div>
+                <div class="text-blue-200 text-xs">Alunos atendidos</div>
+              </div>
+              <div class="bg-white/10 rounded-xl p-3">
+                <div class="text-white font-bold text-2xl">EF–EM</div>
+                <div class="text-blue-200 text-xs">Todas as fases</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -top-4 -right-4 bg-cta text-white text-xs font-bold px-3 py-2 rounded-xl shadow-lg">
+          <i class="fa-solid fa-trophy mr-1"></i> Top Assessoria
+        </div>
+        <div class="absolute -bottom-4 -left-4 bg-white text-primary text-xs font-bold px-3 py-2 rounded-xl shadow-lg">
+          <i class="fa-solid fa-circle-check text-cta mr-1"></i> Avaliação Gratuita
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="anim-bob absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/30 text-xs select-none">
+    <span>Saiba mais</span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     DOR
+════════════════════════════════════════ -->
+<section id="dor" class="py-20 px-6 bg-warm">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="text-center mb-14 reveal">
+      <span class="inline-block text-primary font-semibold text-xs uppercase tracking-widest mb-3">Sinais de alerta</span>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-dark mb-4">Seu filho apresenta algum<br/>desses sinais?</h2>
+      <p class="text-muted text-lg max-w-lg mx-auto">Se você reconhece alguma dessas situações, seu filho pode precisar de apoio especializado.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+
+      <div class="reveal d1 card-hover bg-white rounded-2xl p-6 shadow-sm border border-red-50">
+        <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-book-open text-red-400 text-xl"></i>
+        </div>
+        <h3 class="font-bold text-dark mb-1">Dificuldade para acompanhar as aulas</h3>
+        <p class="text-muted text-sm">Não consegue acompanhar o ritmo da turma e se perde no conteúdo.</p>
+      </div>
+
+      <div class="reveal d2 card-hover bg-white rounded-2xl p-6 shadow-sm border border-orange-50">
+        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-arrow-trend-down text-orange-400 text-xl"></i>
+        </div>
+        <h3 class="font-bold text-dark mb-1">Notas baixas e queda no rendimento</h3>
+        <p class="text-muted text-sm">As notas estão caindo e as recuperações são cada vez mais frequentes.</p>
+      </div>
+
+      <div class="reveal d3 card-hover bg-white rounded-2xl p-6 shadow-sm border border-yellow-50">
+        <div class="w-12 h-12 bg-yellow-50 rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-calendar-xmark text-yellow-500 text-xl"></i>
+        </div>
+        <h3 class="font-bold text-dark mb-1">Falta de organização nos estudos</h3>
+        <p class="text-muted text-sm">Não sabe por onde começar, perde prazos e esquece tarefas.</p>
+      </div>
+
+      <div class="reveal d4 card-hover bg-white rounded-2xl p-6 shadow-sm border border-purple-50">
+        <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-face-sad-tear text-purple-400 text-xl"></i>
+        </div>
+        <h3 class="font-bold text-dark mb-1">Desmotivação para aprender</h3>
+        <p class="text-muted text-sm">Perdeu o interesse pelos estudos e não acredita mais em si mesmo.</p>
+      </div>
+
+      <div class="reveal d5 card-hover bg-white rounded-2xl p-6 shadow-sm border border-blue-50">
+        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-language text-blue-400 text-xl"></i>
+        </div>
+        <h3 class="font-bold text-dark mb-1">Dificuldade em escolas bilíngues</h3>
+        <p class="text-muted text-sm">O idioma adicional cria barreiras que dificultam a aprendizagem.</p>
+      </div>
+
+      <div class="reveal d6 card-hover bg-white rounded-2xl p-6 shadow-sm border border-rose-50">
+        <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center mb-4">
+          <i class="fa-solid fa-brain text-rose-400 text-xl"></i>
+        </div>
+        <h3 class="font-bold text-dark mb-1">Ansiedade com provas e tarefas</h3>
+        <p class="text-muted text-sm">O estresse escolar está afetando o bem-estar emocional do seu filho.</p>
+      </div>
+
+    </div>
+
+    <div class="text-center reveal">
+      <p class="text-dark text-xl font-semibold mb-6">Quanto antes agir, mais fácil recuperar o desempenho escolar.</p>
+      <a href="https://wa.me/5516991969341?text=Quero%20ajuda%20agora!"
+         target="_blank" rel="noopener"
+         onclick="if(typeof gtag!=='undefined')gtag('event','conversion',{'send_to':'AW-XXXXXXXXX/LABEL_AQUI'})"
+         class="inline-flex items-center gap-3 bg-cta hover:bg-cta-h text-white font-bold px-8 py-4 rounded-xl transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5">
+        <i class="fa-brands fa-whatsapp text-xl"></i> Quero ajuda agora
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SOLUÇÃO
+════════════════════════════════════════ -->
+<section id="solucao" class="py-20 px-6 bg-white">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="text-center mb-14 reveal">
+      <span class="inline-block text-accent font-semibold text-xs uppercase tracking-widest mb-3">Nossa solução</span>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-dark mb-4">O que a ACM oferece</h2>
+      <p class="text-muted text-lg max-w-lg mx-auto">Da alfabetização ao Ensino Médio, a ACM oferece o suporte certo para cada fase — seja num plano contínuo ou numa aula pontual quando seu filho mais precisar.</p>
+    </div>
+
+    <!-- ── BLOCO A: Acompanhamento contínuo ── -->
+    <div class="mb-14">
+      <div class="flex items-center gap-3 mb-3 reveal">
+        <div class="w-9 h-9 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fa-solid fa-calendar-days text-white text-sm"></i>
+        </div>
+        <h3 class="font-display font-bold text-xl text-dark">Acompanhamento contínuo</h3>
+        <div class="flex-1 h-px bg-gray-200 ml-1"></div>
+      </div>
+      <p class="text-muted text-sm mb-8 reveal">Para famílias que buscam evolução constante e suporte próximo ao longo do ano letivo.</p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+        <div class="reveal d1 card-hover group p-6 rounded-2xl border-2 border-primary/10 bg-white shadow-sm hover:border-primary/30">
+          <div class="w-12 h-12 bg-primary/10 group-hover:bg-primary rounded-xl flex items-center justify-center mb-4 transition-colors duration-300">
+            <i class="fa-solid fa-spell-check text-primary group-hover:text-white text-xl transition-colors duration-300"></i>
+          </div>
+          <h3 class="font-bold text-dark mb-2">Alfabetização em português e inglês</h3>
+          <p class="text-muted text-sm leading-relaxed">Profissionais especializados nas primeiras etapas da leitura e da escrita, em ambos os idiomas.</p>
+        </div>
+
+        <div class="reveal d2 card-hover group p-6 rounded-2xl border-2 border-primary/10 bg-white shadow-sm hover:border-primary/30">
+          <div class="w-12 h-12 bg-primary/10 group-hover:bg-primary rounded-xl flex items-center justify-center mb-4 transition-colors duration-300">
+            <i class="fa-solid fa-earth-americas text-primary group-hover:text-white text-xl transition-colors duration-300"></i>
+          </div>
+          <h3 class="font-bold text-dark mb-2">Método bilíngue</h3>
+          <p class="text-muted text-sm leading-relaxed">Suporte para alunos de escolas bilíngues, integrando português e inglês ao conteúdo escolar.</p>
+        </div>
+
+        <div class="reveal d3 card-hover group p-6 rounded-2xl border-2 border-primary/10 bg-white shadow-sm hover:border-primary/30">
+          <div class="w-12 h-12 bg-primary/10 group-hover:bg-primary rounded-xl flex items-center justify-center mb-4 transition-colors duration-300">
+            <i class="fa-solid fa-layer-group text-primary group-hover:text-white text-xl transition-colors duration-300"></i>
+          </div>
+          <h3 class="font-bold text-dark mb-2">Todas as matérias, do EF ao EM</h3>
+          <p class="text-muted text-sm leading-relaxed">Matemática, Português, Inglês, Ciências, Física, Química, História, Geografia e mais.</p>
+        </div>
+
+        <div class="reveal d4 card-hover group p-6 rounded-2xl border-2 border-primary/10 bg-white shadow-sm hover:border-primary/30">
+          <div class="w-12 h-12 bg-primary/10 group-hover:bg-primary rounded-xl flex items-center justify-center mb-4 transition-colors duration-300">
+            <i class="fa-solid fa-calendar-check text-primary group-hover:text-white text-xl transition-colors duration-300"></i>
+          </div>
+          <h3 class="font-bold text-dark mb-2">Organização da rotina</h3>
+          <p class="text-muted text-sm leading-relaxed">Plano de estudos que se encaixe na rotina do seu filho e da família, com metas semanais claras.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── BLOCO B: Aulas pontuais ── -->
+    <div>
+      <div class="flex items-center gap-3 mb-3 reveal">
+        <div class="w-9 h-9 bg-cta rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fa-solid fa-bolt text-white text-sm"></i>
+        </div>
+        <h3 class="font-display font-bold text-xl text-dark">Aulas pontuais</h3>
+        <div class="flex-1 h-px bg-gray-200 ml-1"></div>
+      </div>
+      <p class="text-muted text-sm mb-8 reveal">Para famílias que precisam de suporte específico em determinado momento — sem compromisso de continuidade.</p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+        <div class="reveal d1 card-hover group p-6 rounded-2xl border-2 border-cta/10 bg-white shadow-sm hover:border-cta/30">
+          <div class="w-12 h-12 bg-green-50 group-hover:bg-cta rounded-xl flex items-center justify-center mb-4 transition-colors duration-300">
+            <i class="fa-solid fa-file-pen text-cta group-hover:text-white text-xl transition-colors duration-300"></i>
+          </div>
+          <h3 class="font-bold text-dark mb-2">Preparação para provas</h3>
+          <p class="text-muted text-sm leading-relaxed">Uma aula focada antes de uma avaliação — revisão do conteúdo que mais cai e resolução de exercícios.</p>
+        </div>
+
+        <div class="reveal d2 card-hover group p-6 rounded-2xl border-2 border-cta/10 bg-white shadow-sm hover:border-cta/30">
+          <div class="w-12 h-12 bg-green-50 group-hover:bg-cta rounded-xl flex items-center justify-center mb-4 transition-colors duration-300">
+            <i class="fa-solid fa-circle-question text-cta group-hover:text-white text-xl transition-colors duration-300"></i>
+          </div>
+          <h3 class="font-bold text-dark mb-2">Resolução de dúvidas</h3>
+          <p class="text-muted text-sm leading-relaxed">Tire dúvidas específicas em qualquer matéria, de forma rápida e objetiva, quando precisar.</p>
+        </div>
+
+        <div class="reveal d3 card-hover group p-6 rounded-2xl border-2 border-cta/10 bg-white shadow-sm hover:border-cta/30">
+          <div class="w-12 h-12 bg-green-50 group-hover:bg-cta rounded-xl flex items-center justify-center mb-4 transition-colors duration-300">
+            <i class="fa-solid fa-rotate-left text-cta group-hover:text-white text-xl transition-colors duration-300"></i>
+          </div>
+          <h3 class="font-bold text-dark mb-2">Revisão de conteúdo</h3>
+          <p class="text-muted text-sm leading-relaxed">Revise um tema específico antes de provas, trabalhos ou apresentações escolares.</p>
+        </div>
+
+        <div class="reveal d4 card-hover group p-6 rounded-2xl border-2 border-cta/10 bg-white shadow-sm hover:border-cta/30">
+          <div class="w-12 h-12 bg-green-50 group-hover:bg-cta rounded-xl flex items-center justify-center mb-4 transition-colors duration-300">
+            <i class="fa-solid fa-graduation-cap text-cta group-hover:text-white text-xl transition-colors duration-300"></i>
+          </div>
+          <h3 class="font-bold text-dark mb-2">Reforço avulso</h3>
+          <p class="text-muted text-sm leading-relaxed">Aula extra em qualquer disciplina — Matemática, Geografia, Inglês — sem precisar de plano fixo.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     MATÉRIAS ATENDIDAS
+════════════════════════════════════════ -->
+<section id="materias" class="py-20 px-6 bg-warm">
+  <div class="max-w-4xl mx-auto">
+
+    <div class="text-center mb-12 reveal">
+      <span class="inline-block text-primary font-semibold text-xs uppercase tracking-widest mb-3">Reforço completo</span>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-dark mb-4">Matérias atendidas</h2>
+      <p class="text-muted text-lg max-w-lg mx-auto">Cobertura total do currículo escolar, do Ensino Fundamental ao Ensino Médio.</p>
+    </div>
+
+    <div class="reveal flex flex-wrap justify-center gap-3">
+      <span class="inline-flex items-center gap-2 bg-white border border-blue-100 text-dark text-sm font-medium px-5 py-2.5 rounded-full shadow-sm card-hover">
+        <i class="fa-solid fa-square-root-variable text-accent text-xs"></i> Matemática
+      </span>
+      <span class="inline-flex items-center gap-2 bg-white border border-blue-100 text-dark text-sm font-medium px-5 py-2.5 rounded-full shadow-sm card-hover">
+        <i class="fa-solid fa-atom text-accent text-xs"></i> Física
+      </span>
+      <span class="inline-flex items-center gap-2 bg-white border border-blue-100 text-dark text-sm font-medium px-5 py-2.5 rounded-full shadow-sm card-hover">
+        <i class="fa-solid fa-flask text-accent text-xs"></i> Química
+      </span>
+      <span class="inline-flex items-center gap-2 bg-white border border-blue-100 text-dark text-sm font-medium px-5 py-2.5 rounded-full shadow-sm card-hover">
+        <i class="fa-solid fa-dna text-accent text-xs"></i> Biologia
+      </span>
+      <span class="inline-flex items-center gap-2 bg-white border border-blue-100 text-dark text-sm font-medium px-5 py-2.5 rounded-full shadow-sm card-hover">
+        <i class="fa-solid fa-microscope text-accent text-xs"></i> Ciências
+      </span>
+      <span class="inline-flex items-center gap-2 bg-white border border-blue-100 text-dark text-sm font-medium px-5 py-2.5 rounded-full shadow-sm card-hover">
+        <i class="fa-solid fa-landmark text-accent text-xs"></i> História
+      </span>
+      <span class="inline-flex items-center gap-2 bg-white border border-blue-100 text-dark text-sm font-medium px-5 py-2.5 rounded-full shadow-sm card-hover">
+        <i class="fa-solid fa-earth-americas text-accent text-xs"></i> Geografia
+      </span>
+      <span class="inline-flex items-center gap-2 bg-white border border-blue-100 text-dark text-sm font-medium px-5 py-2.5 rounded-full shadow-sm card-hover">
+        <i class="fa-solid fa-book text-accent text-xs"></i> Português
+      </span>
+      <span class="inline-flex items-center gap-2 bg-white border border-blue-100 text-dark text-sm font-medium px-5 py-2.5 rounded-full shadow-sm card-hover">
+        <i class="fa-solid fa-pen-nib text-accent text-xs"></i> Redação
+      </span>
+      <span class="inline-flex items-center gap-2 bg-white border border-blue-100 text-dark text-sm font-medium px-5 py-2.5 rounded-full shadow-sm card-hover">
+        <i class="fa-solid fa-feather text-accent text-xs"></i> Literatura
+      </span>
+      <span class="inline-flex items-center gap-2 bg-white border border-blue-100 text-dark text-sm font-medium px-5 py-2.5 rounded-full shadow-sm card-hover">
+        <i class="fa-solid fa-lightbulb text-accent text-xs"></i> Filosofia
+      </span>
+      <span class="inline-flex items-center gap-2 bg-white border border-blue-100 text-dark text-sm font-medium px-5 py-2.5 rounded-full shadow-sm card-hover">
+        <i class="fa-solid fa-users text-accent text-xs"></i> Sociologia
+      </span>
+      <span class="inline-flex items-center gap-2 bg-white border border-blue-100 text-dark text-sm font-medium px-5 py-2.5 rounded-full shadow-sm card-hover">
+        <i class="fa-solid fa-language text-accent text-xs"></i> Inglês
+      </span>
+      <span class="inline-flex items-center gap-2 bg-white border border-blue-100 text-dark text-sm font-medium px-5 py-2.5 rounded-full shadow-sm card-hover">
+        <i class="fa-solid fa-language text-accent text-xs"></i> Espanhol
+      </span>
+      <span class="inline-flex items-center gap-2 bg-white border border-blue-100 text-dark text-sm font-medium px-5 py-2.5 rounded-full shadow-sm card-hover">
+        <i class="fa-solid fa-chess text-accent text-xs"></i> Xadrez
+      </span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     PROVA SOCIAL
+════════════════════════════════════════ -->
+<section id="depoimentos" class="py-20 px-6" style="background:linear-gradient(160deg,#EEF4FF 0%,#F0F9FF 100%)">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="text-center mb-12 reveal">
+      <span class="inline-block text-accent font-semibold text-xs uppercase tracking-widest mb-3">Depoimentos</span>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-dark">Famílias que confiaram na ACM</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
+
+      <div class="reveal d1 card-hover bg-white rounded-2xl p-6 shadow-sm border border-blue-50">
+        <div class="flex gap-1 mb-4">
+          <i class="fa-solid fa-star text-yellow-400 text-sm"></i><i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+          <i class="fa-solid fa-star text-yellow-400 text-sm"></i><i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+          <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+        </div>
+        <p class="text-dark text-sm leading-relaxed mb-5 italic">"Minha filha estava se sentindo incapaz, com notas baixas e sem vontade de estudar. Após 2 meses com a ACM, ela mudou completamente. Hoje vai para a escola feliz!"</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
+          <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-user text-primary text-sm"></i>
+          </div>
+          <div>
+            <div class="font-semibold text-dark text-sm">Ana Paula M.</div>
+            <div class="text-muted text-xs">Mãe da Sofia, 7º ano</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal d2 card-hover bg-white rounded-2xl p-6 shadow-sm border border-blue-50">
+        <div class="flex gap-1 mb-4">
+          <i class="fa-solid fa-star text-yellow-400 text-sm"></i><i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+          <i class="fa-solid fa-star text-yellow-400 text-sm"></i><i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+          <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+        </div>
+        <p class="text-dark text-sm leading-relaxed mb-5 italic">"Meu filho está em escola bilíngue e tinha muita dificuldade. A ACM entende esse contexto e criou um método que funcionou de verdade. As notas subiram muito!"</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
+          <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-user text-primary text-sm"></i>
+          </div>
+          <div>
+            <div class="font-semibold text-dark text-sm">Ricardo F.</div>
+            <div class="text-muted text-xs">Pai do Lucas, 5º ano</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal d3 card-hover bg-white rounded-2xl p-6 shadow-sm border border-blue-50">
+        <div class="flex gap-1 mb-4">
+          <i class="fa-solid fa-star text-yellow-400 text-sm"></i><i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+          <i class="fa-solid fa-star text-yellow-400 text-sm"></i><i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+          <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+        </div>
+        <p class="text-dark text-sm leading-relaxed mb-5 italic">"A organização da rotina de estudos mudou tudo em casa. Meu filho agora tem disciplina, sabe as datas das provas e entrega tudo no prazo. Recomendo muito!"</p>
+        <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
+          <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-user text-primary text-sm"></i>
+          </div>
+          <div>
+            <div class="font-semibold text-dark text-sm">Camila S.</div>
+            <div class="text-muted text-xs">Mãe do Pedro, 8º ano</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="reveal rounded-2xl overflow-hidden shadow-sm">
+      <img src="images/Grupo.png" alt="Alunos acompanhados pela ACM" class="w-full h-72 object-cover" />
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     DIFERENCIAIS
+════════════════════════════════════════ -->
+<section id="diferenciais" class="py-20 px-6 bg-warm">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+      <div class="reveal">
+        <span class="inline-block text-primary font-semibold text-xs uppercase tracking-widest mb-4">Nossos diferenciais</span>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-dark mb-5">Por que escolher a ACM?</h2>
+        <p class="text-muted text-lg leading-relaxed mb-6">A ACM não é um reforço escolar comum. Somos uma assessoria completa que envolve pais, alunos e professores em um plano estruturado de evolução.</p>
+        <a href="https://wa.me/5516991969341?text=Quero%20conhecer%20a%20ACM!"
+           target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 text-accent font-semibold text-sm hover:gap-3 transition-all duration-200">
+          Conhecer nosso método <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <div class="mt-8 rounded-2xl overflow-hidden shadow-lg">
+          <img src="images/Individual.png" alt="Aula individualizada ACM" class="w-full h-64 object-cover object-top" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 reveal">
+
+        <div class="card-hover flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm">
+          <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-check text-cta text-sm"></i>
+          </div>
+          <div>
+            <div class="font-semibold text-dark text-sm">Aulas individuais e personalizadas</div>
+            <div class="text-muted text-xs mt-0.5">Atenção total e plano único para cada aluno</div>
+          </div>
+        </div>
+
+        <div class="card-hover flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm">
+          <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-check text-cta text-sm"></i>
+          </div>
+          <div>
+            <div class="font-semibold text-dark text-sm">Especialistas em alfabetização</div>
+            <div class="text-muted text-xs mt-0.5">Professores qualificados para conduzir a criança com segurança nas primeiras etapas da leitura e da escrita.</div>
+          </div>
+        </div>
+
+        <div class="card-hover flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm">
+          <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-check text-cta text-sm"></i>
+          </div>
+          <div>
+            <div class="font-semibold text-dark text-sm">Ensino em português e inglês</div>
+            <div class="text-muted text-xs mt-0.5">Suporte bilíngue integrado ao conteúdo escolar</div>
+          </div>
+        </div>
+
+        <div class="card-hover flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm">
+          <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-check text-cta text-sm"></i>
+          </div>
+          <div>
+            <div class="font-semibold text-dark text-sm">Presencial em domicílio e on-line</div>
+            <div class="text-muted text-xs mt-0.5">Flexibilidade total no formato de atendimento</div>
+          </div>
+        </div>
+
+        <div class="card-hover flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm">
+          <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-check text-cta text-sm"></i>
+          </div>
+          <div>
+            <div class="font-semibold text-dark text-sm">Foco na autonomia do aluno</div>
+            <div class="text-muted text-xs mt-0.5">Ensinamos a estudar, não criamos dependência</div>
+          </div>
+        </div>
+
+        <div class="card-hover flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm">
+          <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-check text-cta text-sm"></i>
+          </div>
+          <div>
+            <div class="font-semibold text-dark text-sm">Acompanhamento contínuo</div>
+            <div class="text-muted text-xs mt-0.5">Monitoramento constante do desenvolvimento acadêmico</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     METODOLOGIA
+════════════════════════════════════════ -->
+<section id="metodologia" class="py-20 px-6 bg-white">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+      <!-- Texto principal -->
+      <div class="reveal">
+        <span class="inline-block text-accent font-semibold text-xs uppercase tracking-widest mb-4">Nossa metodologia</span>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-dark mb-5">Ensinamos a aprender,<br/>não a depender.</h2>
+        <p class="text-muted text-lg leading-relaxed mb-6">
+          A ACM acredita em um acompanhamento próximo e individualizado, respeitando o ritmo, as dificuldades e os objetivos de cada aluno. Nosso foco não é criar dependência — é ensinar o aluno a <strong class="text-dark">estudar com autonomia</strong> e construir resultados sólidos ao longo de toda a vida acadêmica.
+        </p>
+        <a href="https://wa.me/5516991969341?text=Quero%20conhecer%20a%20metodologia%20da%20ACM!"
+           target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 text-accent font-semibold text-sm hover:gap-3 transition-all duration-200">
+          Falar com um especialista <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Pilares -->
+      <div class="grid gap-4 reveal">
+        <div class="rounded-2xl overflow-hidden shadow-md">
+          <img src="images/Professores.png" alt="Equipe de professores ACM" class="w-full h-56 object-cover object-top" />
+        </div>
+
+        <div class="card-hover flex items-start gap-4 bg-warm rounded-2xl p-5">
+          <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-user text-white text-lg"></i>
+          </div>
+          <div>
+            <div class="font-bold text-dark mb-1">Respeito ao ritmo individual</div>
+            <div class="text-muted text-sm leading-relaxed">Cada aluno aprende de um jeito. Adaptamos o método às dificuldades e ao estilo de aprendizado de cada um.</div>
+          </div>
+        </div>
+
+        <div class="card-hover flex items-start gap-4 bg-warm rounded-2xl p-5">
+          <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-brain text-white text-lg"></i>
+          </div>
+          <div>
+            <div class="font-bold text-dark mb-1">Desenvolvimento da autonomia</div>
+            <div class="text-muted text-sm leading-relaxed">Ensinamos técnicas de estudo, organização e raciocínio para que o aluno evolua mesmo fora das aulas.</div>
+          </div>
+        </div>
+
+        <div class="card-hover flex items-start gap-4 bg-warm rounded-2xl p-5">
+          <div class="w-12 h-12 bg-cta rounded-xl flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-chart-line text-white text-lg"></i>
+          </div>
+          <div>
+            <div class="font-bold text-dark mb-1">Resultados reais e contínuos</div>
+            <div class="text-muted text-sm leading-relaxed">O progresso é medido pelo desempenho real na escola — notas, provas e desenvolvimento acadêmico concreto.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     COMO FUNCIONA
+════════════════════════════════════════ -->
+<section id="como-funciona" class="py-20 px-6 bg-white">
+  <div class="max-w-4xl mx-auto">
+
+    <div class="text-center mb-14 reveal">
+      <span class="inline-block text-accent font-semibold text-xs uppercase tracking-widest mb-3">Processo</span>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-dark mb-4">Como funciona</h2>
+      <p class="text-muted text-lg max-w-md mx-auto">Em 3 passos simples seu filho já começa a evoluir.</p>
+    </div>
+
+    <div class="relative grid lg:grid-cols-3 gap-10">
+      <!-- desktop connector -->
+      <div class="hidden lg:block absolute top-12 pointer-events-none"
+           style="left:18%;right:18%;border-top:2px dashed rgba(37,99,235,.2)"></div>
+
+      <div class="reveal d1 flex flex-col items-center text-center">
+        <div class="relative mb-6">
+          <div class="w-24 h-24 bg-primary rounded-2xl flex items-center justify-center shadow-lg">
+            <i class="fa-solid fa-comments text-white text-3xl"></i>
+          </div>
+          <div class="absolute -top-3 -right-3 w-9 h-9 bg-accent text-white rounded-full flex items-center justify-center font-bold shadow">1</div>
+        </div>
+        <h3 class="font-bold text-dark text-xl mb-3">Conversa inicial</h3>
+        <p class="text-muted text-sm leading-relaxed">Entendemos a situação do seu filho, suas dificuldades e objetivos. Sem custo e sem compromisso.</p>
+      </div>
+
+      <div class="reveal d2 flex flex-col items-center text-center">
+        <div class="relative mb-6">
+          <div class="w-24 h-24 bg-accent rounded-2xl flex items-center justify-center shadow-lg">
+            <i class="fa-solid fa-clipboard-list text-white text-3xl"></i>
+          </div>
+          <div class="absolute -top-3 -right-3 w-9 h-9 bg-primary text-white rounded-full flex items-center justify-center font-bold shadow">2</div>
+        </div>
+        <h3 class="font-bold text-dark text-xl mb-3">Diagnóstico e plano</h3>
+        <p class="text-muted text-sm leading-relaxed">Avaliamos o nível do aluno, identificamos gaps e criamos um plano de acompanhamento personalizado.</p>
+      </div>
+
+      <div class="reveal d3 flex flex-col items-center text-center">
+        <div class="relative mb-6">
+          <div class="w-24 h-24 bg-cta rounded-2xl flex items-center justify-center shadow-lg">
+            <i class="fa-solid fa-rocket text-white text-3xl"></i>
+          </div>
+          <div class="absolute -top-3 -right-3 w-9 h-9 bg-dark text-white rounded-full flex items-center justify-center font-bold shadow">3</div>
+        </div>
+        <h3 class="font-bold text-dark text-xl mb-3">Início e evolução</h3>
+        <p class="text-muted text-sm leading-relaxed">As aulas começam com foco total no aluno. Acompanhamos a evolução e ajustamos o plano conforme necessário.</p>
+      </div>
+    </div>
+
+    <div class="text-center mt-14 reveal">
+      <a href="https://wa.me/5516991969341?text=Quero%20fazer%20uma%20avaliação%20gratuita!"
+         target="_blank" rel="noopener"
+         onclick="if(typeof gtag!=='undefined')gtag('event','conversion',{'send_to':'AW-XXXXXXXXX/LABEL_AQUI'})"
+         class="inline-flex items-center gap-3 bg-primary hover:bg-primary-light text-white font-bold px-10 py-4 rounded-xl transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5">
+        <i class="fa-brands fa-whatsapp text-xl"></i> Começar agora — avaliação gratuita
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FAQ
+════════════════════════════════════════ -->
+<section id="faq" class="py-20 px-6 bg-warm">
+  <div class="max-w-3xl mx-auto">
+
+    <div class="text-center mb-12 reveal">
+      <span class="inline-block text-primary font-semibold text-xs uppercase tracking-widest mb-3">Dúvidas frequentes</span>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-dark">Perguntas frequentes</h2>
+    </div>
+
+    <div class="space-y-3 reveal">
+
+      <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-sm">
+        <button class="faq-btn w-full flex items-center justify-between p-6 text-left gap-4">
+          <span class="font-semibold text-dark">Vocês atendem quais séries?</span>
+          <i class="fa-solid fa-chevron-down faq-icon text-accent text-sm flex-shrink-0"></i>
+        </button>
+        <div class="faq-body"><p class="text-muted text-sm leading-relaxed px-6 pb-5">Atendemos alunos do 1º ano do Ensino Fundamental até o 3º ano do Ensino Médio. Nossa equipe é preparada para todas as faixas etárias e níveis de aprendizagem.</p></div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-sm">
+        <button class="faq-btn w-full flex items-center justify-between p-6 text-left gap-4">
+          <span class="font-semibold text-dark">É online ou presencial?</span>
+          <i class="fa-solid fa-chevron-down faq-icon text-accent text-sm flex-shrink-0"></i>
+        </button>
+        <div class="faq-body"><p class="text-muted text-sm leading-relaxed px-6 pb-5">Trabalhamos com os dois formatos: presencial e on-line. Também oferecemos atendimento a domicílio, indo até a casa do aluno. A escolha do formato depende da preferência da família.</p></div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-sm">
+        <button class="faq-btn w-full flex items-center justify-between p-6 text-left gap-4">
+          <span class="font-semibold text-dark">Atendem escolas bilíngues?</span>
+          <i class="fa-solid fa-chevron-down faq-icon text-accent text-sm flex-shrink-0"></i>
+        </button>
+        <div class="faq-body"><p class="text-muted text-sm leading-relaxed px-6 pb-5">Sim, esse é um dos nossos grandes diferenciais. Temos professores especializados em metodologia bilíngue que entendem a dinâmica dessas escolas.</p></div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-sm">
+        <button class="faq-btn w-full flex items-center justify-between p-6 text-left gap-4">
+          <span class="font-semibold text-dark">Como funciona a avaliação inicial?</span>
+          <i class="fa-solid fa-chevron-down faq-icon text-accent text-sm flex-shrink-0"></i>
+        </button>
+        <div class="faq-body"><p class="text-muted text-sm leading-relaxed px-6 pb-5">Não trabalhamos com avaliações próprias. O acompanhamento acontece através da evolução real do aluno na escola: notas, provas, desempenho acadêmico, organização nos estudos e desenvolvimento escolar geral. Isso garante que o foco esteja sempre no que importa para a escola do aluno.</p></div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-sm">
+        <button class="faq-btn w-full flex items-center justify-between p-6 text-left gap-4">
+          <span class="font-semibold text-dark">Quantas aulas por semana?</span>
+          <i class="fa-solid fa-chevron-down faq-icon text-accent text-sm flex-shrink-0"></i>
+        </button>
+        <div class="faq-body"><p class="text-muted text-sm leading-relaxed px-6 pb-5">A quantidade de aulas é definida conforme a necessidade do aluno e a preferência dos pais. Não existe um número fixo — adaptamos a frequência para que o acompanhamento seja eficiente sem sobrecarregar a rotina da família.</p></div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-sm">
+        <button class="faq-btn w-full flex items-center justify-between p-6 text-left gap-4">
+          <span class="font-semibold text-dark">As aulas são individuais?</span>
+          <i class="fa-solid fa-chevron-down faq-icon text-accent text-sm flex-shrink-0"></i>
+        </button>
+        <div class="faq-body"><p class="text-muted text-sm leading-relaxed px-6 pb-5">Sim, todas as aulas são individuais (1:1). Acreditamos que o atendimento individualizado é o único jeito de realmente atender as necessidades específicas de cada criança.</p></div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-sm">
+        <button class="faq-btn w-full flex items-center justify-between p-6 text-left gap-4">
+          <span class="font-semibold text-dark">Como os pais acompanham a evolução?</span>
+          <i class="fa-solid fa-chevron-down faq-icon text-accent text-sm flex-shrink-0"></i>
+        </button>
+        <div class="faq-body"><p class="text-muted text-sm leading-relaxed px-6 pb-5">Os pais acompanham a evolução através da melhora concreta no desempenho escolar do filho: notas mais altas, melhores resultados em provas, maior organização nos estudos e desenvolvimento acadêmico contínuo. O progresso se vê na escola, no dia a dia.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     CTA FINAL + FORMULÁRIO
+════════════════════════════════════════ -->
+<section id="contato" class="py-20 px-6 bg-white">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+      <!-- Left -->
+      <div class="reveal">
+        <span class="inline-block text-accent font-semibold text-xs uppercase tracking-widest mb-4">Dê o primeiro passo</span>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-dark leading-tight mb-5">
+          Não espere a<br/><span class="text-primary">dificuldade aumentar.</span>
+        </h2>
+        <p class="text-muted text-lg leading-relaxed mb-8">
+          Quanto antes seu filho receber o acompanhamento certo, maiores as chances de recuperar o desempenho e voltar a aprender com <strong class="text-dark">confiança e motivação.</strong>
+        </p>
+        <div class="space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-check text-cta text-xs"></i>
+            </div>
+            <span class="text-dark text-sm">Avaliação gratuita e sem compromisso</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-check text-cta text-xs"></i>
+            </div>
+            <span class="text-dark text-sm">Resposta rápida via WhatsApp</span>
+          </div>
+        </div>
+        <div class="mt-8 rounded-2xl overflow-hidden shadow-lg">
+          <img src="images/Maeefilha.png" alt="Mãe acompanhando filha nos estudos em casa" class="w-full h-56 object-cover" />
+        </div>
+      </div>
+
+      <!-- Right form -->
+      <div class="reveal d2">
+        <div class="bg-white rounded-3xl p-8 shadow-2xl border border-gray-100">
+          <h3 class="font-bold text-dark text-xl mb-6">Agende uma avaliação gratuita</h3>
+          <form id="contact-form" class="space-y-4" novalidate>
+            <div>
+              <label class="block text-dark text-sm font-semibold mb-1.5">Seu nome</label>
+              <input type="text" name="nome" placeholder="Ex: Ana Paula"
+                     class="w-full border border-gray-200 rounded-xl px-4 py-3 text-dark text-sm outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all duration-200" required />
+            </div>
+            <div>
+              <label class="block text-dark text-sm font-semibold mb-1.5">Telefone / WhatsApp</label>
+              <input type="tel" name="telefone" placeholder="(16) 99196-9341"
+                     class="w-full border border-gray-200 rounded-xl px-4 py-3 text-dark text-sm outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all duration-200" required />
+            </div>
+            <div>
+              <label class="block text-dark text-sm font-semibold mb-1.5">Série do aluno</label>
+              <select name="serie"
+                      class="w-full border border-gray-200 rounded-xl px-4 py-3 text-dark text-sm outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all duration-200 bg-white">
+                <option value="">Selecione a série</option>
+                <option>1º ao 3º ano (EF1)</option>
+                <option>4º ao 5º ano (EF1)</option>
+                <option>6º ao 9º ano (EF2)</option>
+                <option>1º ao 3º ano (EM)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-dark text-sm font-semibold mb-1.5">Escola que frequenta</label>
+              <input type="text" name="escola" placeholder="Ex: Colégio São Paulo"
+                     class="w-full border border-gray-200 rounded-xl px-4 py-3 text-dark text-sm outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all duration-200" />
+            </div>
+            <div>
+              <label class="block text-dark text-sm font-semibold mb-1.5">Mensagem (opcional)</label>
+              <textarea name="mensagem" rows="3" placeholder="Conte um pouco sobre as dificuldades do seu filho..."
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-dark text-sm outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all duration-200 resize-none"></textarea>
+            </div>
+            <button type="submit"
+                    class="w-full flex items-center justify-center gap-2 bg-cta hover:bg-cta-h text-white font-bold py-4 rounded-xl transition-all duration-200 hover:shadow-xl text-base">
+              <i class="fa-solid fa-paper-plane"></i> Agendar avaliação gratuita
+            </button>
+          </form>
+          <div class="mt-4 text-center">
+            <p class="text-muted text-xs mb-2">Prefere falar diretamente?</p>
+            <a href="https://wa.me/5516991969341?text=Olá!%20Quero%20agendar%20uma%20avaliação%20gratuita."
+               target="_blank" rel="noopener"
+               class="flex items-center justify-center gap-2 text-white font-semibold py-3 rounded-xl transition-all duration-200 text-sm"
+               style="background:#25D366">
+              <i class="fa-brands fa-whatsapp text-lg"></i> Falar agora no WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer style="background:#0F2340" class="pt-14 pb-8 px-6">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="grid md:grid-cols-3 gap-10 mb-12">
+
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <img src="images/Logo.jpeg" alt="ACM Assessoria Escolar" class="h-12 w-auto" />
+        </div>
+        <p class="text-blue-300 text-sm leading-relaxed mb-5">
+          Acompanhamento acadêmico individualizado do ensino fundamental ao médio, com foco em autonomia, desenvolvimento escolar e aprendizado eficiente.
+        </p>
+        <div class="flex gap-3">
+          <a href="https://www.instagram.com/acmassessoriabilingue" target="_blank" rel="noopener"
+             class="w-9 h-9 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors duration-200" aria-label="Instagram">
+            <i class="fa-brands fa-instagram text-white text-sm"></i>
+          </a>
+          <a href="#" class="w-9 h-9 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-colors duration-200" aria-label="Facebook">
+            <i class="fa-brands fa-facebook text-white text-sm"></i>
+          </a>
+          <a href="https://wa.me/5516991969341" target="_blank" rel="noopener"
+             class="w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-200" style="background:rgba(22,163,74,.7)"
+             aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp text-white text-sm"></i>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-white font-semibold mb-5">Contato</h4>
+        <ul class="space-y-3 text-blue-300 text-sm">
+          <li class="flex items-center gap-2.5">
+            <i class="fa-brands fa-whatsapp text-green-400 w-4"></i>
+            <a href="https://wa.me/5516991969341" class="hover:text-white transition-colors">(16) 99196-9341</a>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <i class="fa-solid fa-envelope text-blue-400 w-4"></i>
+            <a href="mailto:contato@acmescolar.com.br" class="hover:text-white transition-colors">contato@acmescolar.com.br</a>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <i class="fa-solid fa-location-dot text-blue-400 w-4 mt-0.5 flex-shrink-0"></i>
+            <span>São Paulo, SP — Brasil<br/>Atendimento online e presencial</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-semibold mb-5">Links rápidos</h4>
+        <ul class="space-y-2 text-blue-300 text-sm">
+          <li><a href="#dor" class="hover:text-white transition-colors">Identificar dificuldades</a></li>
+          <li><a href="#solucao" class="hover:text-white transition-colors">Nossas soluções</a></li>
+          <li><a href="#materias" class="hover:text-white transition-colors">Matérias atendidas</a></li>
+          <li><a href="#diferenciais" class="hover:text-white transition-colors">Por que a ACM?</a></li>
+          <li><a href="#metodologia" class="hover:text-white transition-colors">Nossa metodologia</a></li>
+          <li><a href="#como-funciona" class="hover:text-white transition-colors">Como funciona</a></li>
+          <li><a href="#faq" class="hover:text-white transition-colors">Perguntas frequentes</a></li>
+          <li><a href="#contato" class="hover:text-white transition-colors">Agendar avaliação</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-blue-400 text-xs">
+      <span>© 2025 ACM Assessoria Escolar Bilíngue. Todos os direitos reservados.</span>
+      <div class="flex gap-5">
+        <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
+        <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ════════════════════════════════════════
+     BOTÃO FLUTUANTE WHATSAPP
+════════════════════════════════════════ -->
+<a href="https://wa.me/5516991969341?text=Olá!%20Vim%20pelo%20site%20da%20ACM%20e%20gostaria%20de%20saber%20mais."
+   target="_blank" rel="noopener"
+   class="fixed bottom-6 right-6 z-50 group"
+   aria-label="Falar no WhatsApp">
+  <div class="relative wa-ring">
+    <div class="w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-transform duration-200 group-hover:scale-110 relative z-10"
+         style="background:#25D366">
+      <i class="fa-brands fa-whatsapp text-white text-3xl"></i>
+    </div>
+  </div>
+  <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-dark text-white text-xs font-medium px-3 py-2 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg">
+    Falar no WhatsApp
+    <span class="absolute top-1/2 -translate-y-1/2 -right-1 w-2 h-2 bg-dark rotate-45 block"></span>
+  </div>
+</a>
+
+
+<!-- ════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════ -->
+<script>
+  // ── Navbar shrink ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('nav-scrolled', window.scrollY > 80);
+  }, { passive: true });
+
+  // ── Smooth scroll ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const el = document.querySelector(a.getAttribute('href'));
+      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // ── Scroll reveal ──
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // ── Counter animation ──
+  function runCounter(el) {
+    const target = +el.dataset.target;
+    const duration = 1600;
+    const start = performance.now();
+    const tick = now => {
+      const p = Math.min((now - start) / duration, 1);
+      el.textContent = Math.floor(p * target);
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    };
+    requestAnimationFrame(tick);
+  }
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { runCounter(e.target); counterObs.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
+  // ── FAQ accordion ──
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('faq-open');
+      document.querySelectorAll('.faq-item.faq-open').forEach(i => i.classList.remove('faq-open'));
+      if (!isOpen) item.classList.add('faq-open');
+    });
+  });
+
+  // ── Contact form → Google Sheets + WhatsApp ──
+  // Substituir SEU_SCRIPT_ID pela URL gerada ao implantar o Apps Script
+  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbw4ZkPdCKdn7HHH8DAml-60pEDdjX4EANXLCyK1LPFFotLtUAg6Z5H-pYX8DEphDWWd/exec';
+
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const nome     = this.nome.value.trim();
+    const telefone = this.telefone.value.trim();
+    const serie    = this.serie.value || 'Não informada';
+    const escola   = this.escola.value.trim() || 'Não informada';
+    const msg      = this.mensagem.value.trim();
+    if (!nome || !telefone) { alert('Por favor, preencha seu nome e telefone.'); return; }
+
+    const btn = this.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
+
+    // 1. Salvar no Google Sheets (falha silenciosa — não bloqueia o lead)
+    try {
+      await fetch(SHEETS_URL, {
+        method: 'POST',
+        body: JSON.stringify({ nome, telefone, serie, mensagem: msg }),
+        mode: 'no-cors'
+      });
+    } catch(_) {}
+
+    // 2. Disparar conversão Google Ads
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXXXX/LABEL_AQUI' });
+    }
+
+    // 3. Abrir WhatsApp
+    const text = encodeURIComponent(
+      `Olá! Me chamo ${nome}.\n` +
+      `Telefone: ${telefone}\n` +
+      `Série do aluno: ${serie}\n` +
+      `Escola que frequenta: ${escola}\n` +
+      (msg ? `Mensagem: ${msg}` : 'Gostaria de agendar uma avaliação gratuita.')
+    );
+    window.open(`https://wa.me/5516991969341?text=${text}`, '_blank', 'noopener,noreferrer');
+
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Agendar avaliação gratuita';
+    this.reset();
+  });
+
+  // ── Phone mask ──
+  document.querySelector('input[name="telefone"]').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length > 10) v = v.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+    else if (v.length > 6) v = v.replace(/^(\d{2})(\d{4})(\d{0,4})$/, '($1) $2-$3');
+    else if (v.length > 2) v = v.replace(/^(\d{2})(\d{0,5})$/, '($1) $2');
+    else if (v.length > 0) v = v.replace(/^(\d{0,2})$/, '($1');
+    this.value = v;
+  });
+</script>
+
+</body>
+</html>
