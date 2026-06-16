@@ -85,10 +85,12 @@
     }
 
     /* ── Navbar ── */
+    #navbar {
+      background: #ffffff;
+      box-shadow: 0 1px 0 rgba(0,0,0,.08);
+    }
     .nav-scrolled {
-      background: rgba(30,58,95,.97) !important;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 20px rgba(0,0,0,.2);
+      box-shadow: 0 4px 20px rgba(0,0,0,.10) !important;
     }
 
     /* ── Cards ── */
@@ -133,16 +135,29 @@
 <!-- ════════════════════════════════════════
      NAVBAR
 ════════════════════════════════════════ -->
-<nav id="navbar" class="fixed top-0 inset-x-0 z-50 py-4 px-6 transition-all duration-300">
-  <div class="max-w-6xl mx-auto flex items-center justify-between">
-    <a href="#hero" class="flex items-center gap-2">
+<nav id="navbar" class="fixed top-0 inset-x-0 z-50 py-3 px-6 transition-all duration-300">
+  <div class="max-w-6xl mx-auto flex items-center justify-between gap-6">
+
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-2 flex-shrink-0">
       <img src="images/Logo.jpeg" alt="ACM Assessoria Escolar" class="h-10 w-auto" />
     </a>
+
+    <!-- Links de navegação -->
+    <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+      <a href="#solucao" class="hover:text-primary transition-colors">Serviços</a>
+      <a href="#diferenciais" class="hover:text-primary transition-colors">Diferenciais</a>
+      <a href="#metodologia" class="hover:text-primary transition-colors">Como funciona</a>
+      <a href="#faq" class="hover:text-primary transition-colors">Dúvidas</a>
+    </div>
+
+    <!-- CTA -->
     <a href="https://wa.me/5516991969341?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais."
        target="_blank" rel="noopener"
-       class="hidden md:inline-flex items-center gap-2 bg-cta hover:bg-cta-h text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:shadow-lg">
+       class="hidden md:inline-flex items-center gap-2 bg-cta hover:bg-cta-h text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:shadow-lg flex-shrink-0">
       <i class="fa-brands fa-whatsapp text-base"></i> Falar no WhatsApp
     </a>
+
   </div>
 </nav>
 
